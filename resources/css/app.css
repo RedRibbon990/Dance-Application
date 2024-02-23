@@ -1,0 +1,5 @@
+/* Importa Bootstrap CSS */
+@import url('../../node_modules/bootstrap/dist/css/bootstrap.min.css');
+
+/* Importa il tuo file di stile personalizzato */
+@import url('./style.css');
