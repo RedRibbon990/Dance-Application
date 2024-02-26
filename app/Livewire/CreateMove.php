@@ -3,7 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\Category;
-use App\Models\Move;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class CreateMove extends Component
@@ -35,21 +35,16 @@ class CreateMove extends Component
         $this->validate();
 
         $category = Category::find($this->category);
-        $category->move()->create([
+        $move = $category->move()->create([
             'title' => $this->title,
             'body' => $this->body,
             'difficulty' => $this->difficulty,
             'tags' => $this->tags,
         ]);
-
+        Auth::user()->moves()->save($move);
         session()->flash('message', 'Annuncio creato con successo!');
 
         $this->resetForm();
-    }
-
-    public function updated($propertyName)
-    {
-        $this->validateOnly($propertyName);
     }
 
     private function resetForm()

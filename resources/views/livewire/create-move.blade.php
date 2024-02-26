@@ -54,7 +54,7 @@
                             @endforeach
                         </select>
                         @error('category')
-                            <div class="invalid-feedback">{{$message}}</div>
+                            <p class="text-danger">{{ $message }}</p>
                         @enderror
                     </div>
 
@@ -67,9 +67,4 @@
         </div>
     </div>
 
-    @if (session()->has('message'))
-        <div class="flex flex-row justify-center my-2 alert alert-success">
-            {{ session('message') }}
-        </div>
-    @endif
 </div>
