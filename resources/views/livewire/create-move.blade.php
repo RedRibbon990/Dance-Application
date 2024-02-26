@@ -43,6 +43,20 @@
                         @enderror
                     </div>
                     
+                    <div class="mb-3">
+                        <label for="category" class="form-label">Categoria</label>
+                        <select wire:model.defer="category" id="category" class="form-select @error('category') is-invalid @enderror">
+                            <option value="">Scegli la categoria</option>
+                            @foreach ($categories as $category)
+                                <option value="{{$category->id}}" {{ old('category') == $category->id ? 'selected' : '' }}>
+                                    {{$category->name}}
+                                </option>
+                            @endforeach
+                        </select>
+                        @error('category')
+                            <div class="invalid-feedback">{{$message}}</div>
+                        @enderror
+                    </div>
 
                     <div class="mt-4">
                         <button type="submit" class="btn btn-info text-white shadow px-4 py-2">Crea</button>
