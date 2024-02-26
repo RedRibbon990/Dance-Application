@@ -18,4 +18,5 @@ Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
 
-Route::get('/new/movement', [MoveController::class, 'createMovement'])->name('movements.create');
+Route::get('/new/movement', [MoveController::class, 'createMovement'])->middleware('auth')
+    ->name('movements.create');

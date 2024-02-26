@@ -27,7 +27,7 @@ class CreateMove extends Component
         'min' => 'Il campo :attribute è troppo corto',
         'numeric' => 'Il campo :attribute dev \'essere un numero',
         'max' => 'Il campo :attribute non può superare le centinaia',
-        'title.unique' => 'L \':attribute è già stata utilizzata.',
+        'title.unique' => 'Il :attribute è già stata utilizzata.',
     ];
 
     public function store()
