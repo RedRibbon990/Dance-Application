@@ -7,9 +7,10 @@
     <title>Salsa & Bachata</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
     {{ $styles ?? '' }}
+    @livewireStyles
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    {{ $style ?? '' }}
 </head>
-
-@vite(['resources/css/app.css', 'resources/js/app.js'])
 
 <body>
 
@@ -17,6 +18,7 @@
 
     {{$slot}}
 
+    @livewireScripts
     {{ $scripts ?? '' }}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <x-footer />
