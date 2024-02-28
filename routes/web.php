@@ -18,6 +18,9 @@ use App\Http\Controllers\FrontController;
 
 Route::get('/', [FrontController::class, 'welcome'])->name('welcome');
 
+
+Route::get('/categories/{category}', [FrontController::class, 'showCategory'])->name('category.show');
+
 Route::get('/new/movement', [MoveController::class, 'createMovement'])->middleware('auth')
     ->name('movements.create');
 
@@ -25,5 +28,7 @@ Route::get('/new/movement', [MoveController::class, 'createMovement'])->middlewa
 Route::get('/profile', [Controller::class, 'profile'])->middleware('auth')
     ->name('profile');
 
+// Search
+Route::get('/search', [FrontController::class, 'search'])->name('search');
 
-Route::get('/categories/{category}', [FrontController::class, 'showCategory'])->name('category.show');
+

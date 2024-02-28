@@ -29,6 +29,18 @@ class FrontController extends Controller
         return view('categories.show', compact('category', 'moves'));
     }
     
+    public function search(Request $request)
+{
+    $query = $request->input('query');
+
+    $moves = Move::where('title', 'like', "%$query%")
+                ->orWhere('body', 'like', "%$query%")
+                ->orderBy('created_at', 'desc')
+                ->get();
+
+    return view('search', compact('moves', 'query'));
+}
+
 
     public function profile()
     {
