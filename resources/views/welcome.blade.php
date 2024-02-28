@@ -1,38 +1,46 @@
 <x-layout>
+
     <body>
         <header class="header">
-            <div class="hero">
+            <div class="hero p-1">
                 <div class="container">
                     <h1 class="hero-title">Scopri il mondo del ballo con BallApp</h1>
-                    <p class="hero-subtitle">L'app che ti guiderà passo dopo passo verso il ballo dei tuoi sogni.</p>
+                    <p class="hero-subtitle p-0">L'app che ti guiderà passo dopo passo verso il ballo dei tuoi sogni.
+                    </p>
                 </div>
             </div>
         </header>
-        
+
         <section id="carousel">
             <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
                 <div class="carousel-indicators">
-                    <button type="button" data-bs-target="#carouselExampleFade" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                    <button type="button" data-bs-target="#carouselExampleFade" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                    <button type="button" data-bs-target="#carouselExampleFade" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                    <button type="button" data-bs-target="#carouselExampleFade" data-bs-slide-to="0" class="active"
+                        aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carouselExampleFade" data-bs-slide-to="1"
+                        aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#carouselExampleFade" data-bs-slide-to="2"
+                        aria-label="Slide 3"></button>
                 </div>
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img src="https://picsum.photos/1200/500?random=1" class="d-block w-100 img-fluid" alt="First slide">
+                        <img src="https://picsum.photos/1200/500?random=1" class="d-block w-100 img-fluid"
+                            alt="First slide">
                         <div class="carousel-caption d-none d-md-block">
                             <h5>First slide label</h5>
                             <p>Some representative placeholder content for the first slide.</p>
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <img src="https://picsum.photos/1200/500?random=2" class="d-block w-100 img-fluid" alt="Second slide">
+                        <img src="https://picsum.photos/1200/500?random=2" class="d-block w-100 img-fluid"
+                            alt="Second slide">
                         <div class="carousel-caption d-none d-md-block">
                             <h5>Second slide label</h5>
                             <p>Some representative placeholder content for the second slide.</p>
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <img src="https://picsum.photos/1200/500?random=3" class="d-block w-100 img-fluid" alt="Third slide">
+                        <img src="https://picsum.photos/1200/500?random=3" class="d-block w-100 img-fluid"
+                            alt="Third slide">
                         <div class="carousel-caption d-none d-md-block">
                             <h5>Third slide label</h5>
                             <p>Some representative placeholder content for the third slide.</p>
@@ -49,32 +57,75 @@
                 </button>
             </div>
         </section>
-        
-        <section id="dance-styles" class="py-5">
+
+        <section id="dance-styles" class="py-5 bg-light text-black">
             <div class="container text-center">
                 <h2 class="section-title mb-4">Scopri i Balli</h2>
-                <div class="row justify-content-center">
-                    <div class="col-md-6 col-lg-4 mb-4">
-                        <div class="card border-0 shadow">
-                            <img src="https://picsum.photos/1200/500?random=4" class="card-img-top" alt="Salsa">
-                            <div class="card-body">
-                                <h3 class="card-title">Salsa</h3>
-                                <p class="card-text">Scopri il ritmo coinvolgente della Salsa e impara i passi fondamentali.</p>
-                                <a href="#" class="btn btn-primary">Scopri di più</a>
+                <div class="row d-flex justify-content-center align-items-center">
+                    @foreach($categories as $category)
+                        <div class="col-md-6 col-lg-4 mb-4">
+                            <div class="card h-100 border-0 shadow">
+                                <img src="https://picsum.photos/1200/500?random=4" class="card-img-top" alt="Salsa">
+                                <div class="card-body d-flex flex-column align-items-center">
+                                    <div class="logo-container">
+                                        <img src="{{ $category->logo }}" alt="{{ $category->name }} Icon"
+                                            class="category-icon img-fluid">
+                                    </div>
+                                    <h3 class="card-title">{{ $category->name }}</h3>
+                                    <p class="card-text">{{ $category->description }}</p>
+                                    <a href="{{ route('category.show', ['category' => $category->id]) }}"
+                                        class="btn btn-primary">Scopri di più</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-6 col-lg-4 mb-4">
-                        <div class="card border-0 shadow">
-                            <img src="https://picsum.photos/1200/500?random=5" class="card-img-top" alt="Bachata">
-                            <div class="card-body">
-                                <h3 class="card-title">Bachata</h3>
-                                <p class="card-text">Esplora la sensualità della Bachata e impara i movimenti eleganti.</p>
-                                <a href="#" class="btn btn-primary">Scopri di più</a>
+                    @endforeach
+                </div>
+            </div>
+            <div class="container py-5">
+                <h4 class="mb-3">La differenza tra Salsa e Bachata?</h4>
+                <p>
+                    Lo stile è completamente differente così come gli accenti ritmici. A differenza della bachata,
+                    che è spesso ballata con un movimento laterale, la salsa è tipicamente eseguita sul posto grazie
+                    a passi in avanti e all'indietro, lateralmente, diagonalmente e possiede più livelli di
+                    distribuzione anche in altezza.
+                </p>
+            </div>
+
+        </section>
+
+        <!-- Show new Moves -->
+        <section id="dance-moves" class="py-5">
+            <div class="container text-center">
+                <h2 class="section-title mb-4">Le ultime figure di ballo</h2>
+                <div class="row justify-content-center">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="row">
+                                @foreach($moves as $move)
+                                    <div class="col-12 col-md-4 mb-4">
+                                        <div class="card move-card shadow-sm">
+                                            <img src="https://picsum.photos/200" class="card-img-top rounded-top"
+                                                alt="...">
+                                            <div class="card-body">
+                                                <h5 class="card-title">{{ $move->title }}</h5>
+                                                <p class="card-text">
+                                                    @if(strlen($move->body) > 60)
+                                                        {{ Str::limit($move->body, 60) }}
+                                                    @else
+                                                        {{ $move->body }}
+                                                    @endif
+                                                </p>
+                                                <p class="card-text"><small class="text-muted">Difficoltà:
+                                                        {{ $move->difficulty }}</small></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endforeach
                             </div>
                         </div>
                     </div>
                 </div>
+
             </div>
         </section>
 

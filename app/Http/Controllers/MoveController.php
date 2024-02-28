@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class MoveController extends Controller
@@ -10,4 +11,5 @@ class MoveController extends Controller
     {
         return view('movements.create');
     }
+
 }

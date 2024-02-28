@@ -9,9 +9,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Category extends Model
 {
     use HasFactory;
-    protected $fillable = ['name'];
+    protected $fillable = ['name', 'description'];
 
-    public function move()
+    public function moves()
     {
         return $this->hasMany(Move::class);
     }

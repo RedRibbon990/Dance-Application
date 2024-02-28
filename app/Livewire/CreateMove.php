@@ -9,6 +9,7 @@ use Livewire\Component;
 class CreateMove extends Component
 {
     public $title;
+    public $subtitle;
     public $body;
     public $difficulty;
     public $tags;
@@ -16,6 +17,7 @@ class CreateMove extends Component
 
     protected $rules = [
         'title' => 'required|unique:moves|min:3',
+        'subtitle' => 'required|min:3',
         'body' => 'required|min:8',
         'difficulty' => 'required|numeric',
         'tags' => 'nullable',
@@ -35,13 +37,14 @@ class CreateMove extends Component
         $this->validate();
 
         $category = Category::find($this->category);
-        $move = $category->move()->create([
+        $moves = $category->moves()->create([
             'title' => $this->title,
+            'subtitle' => $this->subtitle,
             'body' => $this->body,
             'difficulty' => $this->difficulty,
             'tags' => $this->tags,
         ]);
-        Auth::user()->moves()->save($move);
+        Auth::user()->moves()->save($moves);
         session()->flash('message', 'Annuncio creato con successo!');
 
         $this->resetForm();
@@ -50,6 +53,7 @@ class CreateMove extends Component
     private function resetForm()
     {
         $this->title = '';
+        $this->subtitle = '';
         $this->body = '';
         $this->difficulty = '';
         $this->tags = '';

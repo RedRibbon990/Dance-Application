@@ -1,7 +1,9 @@
 <?php
 
-use App\Http\Controllers\MoveController;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MoveController;
+use App\Http\Controllers\FrontController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,9 +16,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('welcome');
+Route::get('/', [FrontController::class, 'welcome'])->name('welcome');
 
 Route::get('/new/movement', [MoveController::class, 'createMovement'])->middleware('auth')
     ->name('movements.create');
+
+// User
+Route::get('/profile', [Controller::class, 'profile'])->middleware('auth')
+    ->name('profile');
+
+
+Route::get('/categories/{category}', [FrontController::class, 'showCategory'])->name('category.show');

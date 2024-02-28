@@ -1,7 +1,7 @@
 <div>
     <div class="container-fluid p-2 text-center text-white">
         <div class="row justify-content-center">
-            <h1 class="display-1">Inserisci una nuova mossa!</h1>
+            <h1 class="display-1">Inserisci una nuova figura!</h1>
         </div>
     </div>
 
@@ -20,11 +20,21 @@
                     <div class="mb-3">
                         <label for="title" class="form-label">Titolo Movimento:</label>
                         <input wire:model="title" type="text" class="form-control @error('title') is-invalid @enderror" id="title" value="{{ $title }}">
-                        <p class="text-muted">Il sottotitolo deve essere unico</p>
+                        <p class="text-muted">Il titolo deve essere unico</p>
                         @error('title')
                             <p class="text-danger">{{ $message }}</p>
                         @enderror
                     </div>
+
+                    <div class="mb-3">
+                        <label for="subtitle" class="form-label">Sottotitolo:</label>
+                        <input wire:model="subtitle" type="text" class="form-control @error('subtitle') is-invalid @enderror" id="subtitle" value="{{ $subtitle }}">
+                        <p class="text-muted">Una breve descrizione</p>
+                        @error('subtitle')
+                            <p class="text-danger">{{ $message }}</p>
+                        @enderror
+                    </div>
+                    
                     
                     <div class="mb-3">
                         <label for="body" class="form-label">Descrizione:</label>
