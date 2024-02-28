@@ -2,10 +2,10 @@
 
     <body>
         <header class="header">
-            <div class="hero p-1">
-                <div class="container">
+            <div class="hero d-flex justify-content-center align-items-center">
+                <div class="container text-center">
                     <h1 class="hero-title">Scopri il mondo del ballo con BallApp</h1>
-                    <p class="hero-subtitle p-0">L'app che ti guiderà passo dopo passo verso il ballo dei tuoi sogni.
+                    <p class="hero-subtitle m-0">L'app che ti guiderà passo dopo passo verso il ballo dei tuoi sogni.
                     </p>
                 </div>
             </div>
@@ -68,8 +68,8 @@
                                 <img src="https://picsum.photos/1200/500?random=4" class="card-img-top" alt="Salsa">
                                 <div class="card-body d-flex flex-column align-items-center">
                                     <div class="logo-container">
-                                        <img src="{{ $category->logo }}" alt="{{ $category->name }} Icon"
-                                            class="category-icon img-fluid">
+                                        <img src="{{ asset($category->logoPath) }}"
+                                            alt="{{ $category->name }} Icon" class="category-icon img-fluid">
                                     </div>
                                     <h3 class="card-title">{{ $category->name }}</h3>
                                     <p class="card-text">{{ $category->description }}</p>
@@ -125,11 +125,10 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </section>
 
-        <section id="features" class="features">
+        <section id="features" class="features bg-white text-black py-3">
             <a href="#download" class="btn btn-primary">Scarica Ora</a>
             <div class="container">
                 <h2 class="section-title">Caratteristiche Principali</h2>
@@ -152,32 +151,31 @@
                         zona.</p>
                 </div>
             </div>
-        </section>
 
-        <section id="download" class="download">
-            <div class="container">
-                <h2 class="section-title">Scarica BallApp Ora</h2>
-                <p class="section-description">Inizia a ballare come hai sempre sognato!</p>
-                <div class="download-buttons">
-                    <a href="#" class="btn btn-primary">App Store</a>
-                    <a href="#" class="btn btn-secondary">Google Play</a>
+            <section id="download" class="download">
+                <div class="container">
+                    <h2 class="section-title">Scarica BallApp Ora</h2>
+                    <p class="section-description">Inizia a ballare come hai sempre sognato!</p>
+                    <div class="download-buttons">
+                        <a href="#" class="btn btn-primary">App Store</a>
+                        <a href="#" class="btn btn-secondary">Google Play</a>
+                    </div>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <footer id="contact" class="footer">
-            <div class="container">
-                <p class="footer-text">Contattaci per ulteriori informazioni</p>
-                <ul class="social-links">
-                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                </ul>
-                <p class="footer-copy">&copy; 2024 BallApp. Tutti i diritti riservati.</p>
-            </div>
-        </footer>
+            <footer id="contact" class="footer">
+                <div class="container">
+                    <p class="footer-text">Contattaci per ulteriori informazioni</p>
+                    <ul class="social-links">
+                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                    </ul>
+                    <p class="footer-copy">&copy; 2024 BallApp. Tutti i diritti riservati.</p>
+                </div>
+            </footer>
 
-        <!-- JavaScript di Bootstrap -->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+            <!-- JavaScript di Bootstrap -->
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     </body>
 </x-layout>

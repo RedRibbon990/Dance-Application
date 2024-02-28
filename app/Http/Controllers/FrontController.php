@@ -14,11 +14,16 @@ class FrontController extends Controller
         $categories = Category::withCount('moves')
             ->orderByDesc('moves_count')
             ->get();
-            
+
+        // Assegna dinamicamente il percorso del logo in base all'ID della categoria
+        foreach ($categories as $category) {
+            $category->logoPath = 'img/logo' . $category->id . '.jpg';
+        }
+
         $categories = $categories->take(3);
 
         $moves = Move::latest()->take(6)->get();
-
+        // Passa le categorie e le mosse alla vista 'welcome'
         return view('welcome', compact('moves', 'categories'));
     }
 
@@ -30,17 +35,16 @@ class FrontController extends Controller
     }
     
     public function search(Request $request)
-{
-    $query = $request->input('query');
+    {
+        $query = $request->input('query');
 
-    $moves = Move::where('title', 'like', "%$query%")
-                ->orWhere('body', 'like', "%$query%")
-                ->orderBy('created_at', 'desc')
-                ->get();
+        $moves = Move::where('title', 'like', "%$query%")
+                    ->orWhere('body', 'like', "%$query%")
+                    ->orderBy('created_at', 'desc')
+                    ->get();
 
-    return view('search', compact('moves', 'query'));
-}
-
+        return view('search', compact('moves', 'query'));
+    }
 
     public function profile()
     {
