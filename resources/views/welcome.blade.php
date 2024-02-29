@@ -60,12 +60,14 @@
 
         <section id="dance-styles" class="py-5 bg-light text-black">
             <div class="container text-center">
-                <h2 class="section-title mb-4">Scopri i Balli</h2>
+                <h2 class="section-title mb-4">Scopri le Categorie</h2>
                 <div class="row d-flex justify-content-center align-items-center">
                     @foreach($categories as $category)
                         <div class="col-md-6 col-lg-4 mb-4">
                             <div class="card h-100 border-0 shadow">
-                                <img src="https://picsum.photos/1200/500?random=4" class="card-img-top" alt="Salsa">
+                                <a class="category-card-link" href="{{ route('category.show', ['category' => $category->id]) }}">
+                                    <img src="https://picsum.photos/1200/500?random=4" class="card-img-top" alt="Salsa">
+                                </a>
                                 <div class="card-body d-flex flex-column align-items-center">
                                     <div class="logo-container">
                                         <img src="{{ asset($category->logoPath) }}"
@@ -73,8 +75,6 @@
                                     </div>
                                     <h3 class="card-title">{{ $category->name }}</h3>
                                     <p class="card-text">{{ $category->description }}</p>
-                                    <a href="{{ route('category.show', ['category' => $category->id]) }}"
-                                        class="btn btn-primary">Scopri di più</a>
                                 </div>
                             </div>
                         </div>
@@ -90,7 +90,6 @@
                     distribuzione anche in altezza.
                 </p>
             </div>
-
         </section>
 
         <!-- Show new Moves -->
@@ -115,8 +114,11 @@
                                                         {{ $move->body }}
                                                     @endif
                                                 </p>
-                                                <p class="card-text"><small class="text-muted">Difficoltà:
-                                                        {{ $move->difficulty }}</small></p>
+                                                <div class="move-difficulty position-absolute top-0 end-0 p-2">
+                                                    <span class="info-icon" data-bs-toggle="tooltip" data-bs-placement="top" title="Difficoltà: {{ $move->difficulty }}">
+                                                        <i class="bi bi-info-circle-fill text-orange"></i>
+                                                    </span>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

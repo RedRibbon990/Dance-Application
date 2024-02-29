@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Move extends Model
 {
     use HasFactory;
-    protected $fillable = ['title', 'subtitle', 'body', 'difficulty'];
+    protected $fillable = ['title', 'subtitle', 'body', 'difficulty', 'category_id'];
 
     public function category()
     {

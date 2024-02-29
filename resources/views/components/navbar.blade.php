@@ -1,12 +1,12 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container-fluid">
-        <a class="navbar-brand" href="{{ route('welcome') }}">S&B</a>
+        <a class="navbar-brand" href="/">S&B</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
             aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 pl-4">
                 <li class="nav-item">
                     <a class="nav-link" href="#features">Features</a>
                 </li>
@@ -38,14 +38,15 @@
                         </ul>
                     </li>
                 @endguest
+                
             </ul>
+            
             <div class="search">
                 <form action="{{ route('search') }}" method="GET" class="d-flex">
                     <input class="form-control me-2" type="search" name="query" placeholder="Search" aria-label="Search">
                     <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
             </div>
-            
         </div>
     </div>
 </nav>

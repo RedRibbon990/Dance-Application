@@ -37,14 +37,18 @@ class FrontController extends Controller
     public function search(Request $request)
     {
         $query = $request->input('query');
-
+    
         $moves = Move::where('title', 'like', "%$query%")
                     ->orWhere('body', 'like', "%$query%")
+                    ->orWhereHas('category', function ($categoryQuery) use ($query) {
+                        $categoryQuery->where('name', 'like', "%$query%");
+                    })
                     ->orderBy('created_at', 'desc')
                     ->get();
-
+    
         return view('search', compact('moves', 'query'));
     }
+    
 
     public function profile()
     {

@@ -1,16 +1,25 @@
-document.addEventListener("DOMContentLoaded", function() {
-    const navbar = document.querySelector('.navbar');
+document.addEventListener( "DOMContentLoaded", function () {
+
+
+    // JavaScript per inizializzare i tooltip di Bootstrap 
+    var tooltipTriggerList = [].slice.call( document.querySelectorAll( '.info-icon' ) );
+    var tooltipList = tooltipTriggerList.map( function ( tooltipTriggerEl ) {
+        return new bootstrap.Tooltip( tooltipTriggerEl );
+    } );
+
+
+    const navbar = document.querySelector( '.navbar' );
     const navbarHeight = navbar.offsetHeight;
     const delta = 5;
     let lastScrollTop = 0;
 
-    window.addEventListener('scroll', function() {
+    window.addEventListener( 'scroll', function () {
         let currentScroll = window.scrollY || document.documentElement.scrollTop;
 
-        if (Math.abs(lastScrollTop - currentScroll) <= delta)
+        if ( Math.abs( lastScrollTop - currentScroll ) <= delta )
             return;
 
-        if (currentScroll > lastScrollTop && currentScroll > navbarHeight) {
+        if ( currentScroll > lastScrollTop && currentScroll > navbarHeight ) {
             // Scrolling verso il basso
             navbar.style.transition = 'transform 0.3s ease';
             navbar.style.transform = 'translateY(-100%)';
@@ -21,17 +30,30 @@ document.addEventListener("DOMContentLoaded", function() {
         }
 
         lastScrollTop = currentScroll;
-    });
+    } );
 
     // Expand / collapse description
-    const moreLinks = document.querySelectorAll(".more-link");
+    var tooltipTriggerList = [].slice.call( document.querySelectorAll( '.info-icon' ) );
+    var tooltipList = tooltipTriggerList.map( function ( tooltipTriggerEl ) {
+        return new bootstrap.Tooltip( tooltipTriggerEl );
+    } );
 
-    moreLinks.forEach(function(link) {
-        link.addEventListener("click", function(e) {
-            e.preventDefault();
-            const moreContent = this.previousElementSibling;
-            moreContent.style.display = moreContent.style.display === "none" ? "inline" : "none";
-            this.textContent = this.textContent === "Leggi di più" ? "Leggi meno" : "Leggi di più";
-        });
-    });
-});
+    // Expand / collapse description
+    const clickableTexts = document.querySelectorAll( ".card-text-clickable" );
+
+    // Aggiungi un event listener a ciascun testo cliccabile
+    clickableTexts.forEach( function ( text ) {
+        text.addEventListener( "click", function () {
+            // Mostra o nasconde il testo nascosto
+            const moreContent = this.querySelector( ".more-content" );
+            const moreHidden = this.querySelector( ".more-hidden" );
+
+            if ( moreContent && moreHidden ) {
+                moreContent.style.display = moreContent.style.display === "none" ? "inline" : "none";
+                moreHidden.style.display = moreHidden.style.display === "none" ? "inline" : "none";
+            }
+        } );
+    } );
+
+
+} );

@@ -11,7 +11,8 @@ body {
 }
 
 .hero {
-    background-color: orange;
+    background-color: white;
+    color: black;
 }
 
 /* Move's card */
@@ -59,9 +60,44 @@ body {
     border-radius: 10px 0 10px;
 }
 
+/* Text Body */
+.card-text-clickable {
+    cursor: pointer;
+    transition: color 0.3s, background-color 0.3s;
+    color: white;
+    background-color: transparent;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.card-text-clickable:hover {
+    background-color: #4c6a8b;
+    color: black;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Category Name */
+.move-category {
+    background-color: black;
+    display: none;
+    padding: 5px 10px;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    z-index: 1;
+}
+
+.card:hover .move-category {
+    display: block;
+}
+
 /*Logo Category */
 .logo-container {
     width: 30px;
     height: 30px; 
     overflow: hidden;
+}
+
+#bg-search {
+    background-color: #4c6a8b;
 }

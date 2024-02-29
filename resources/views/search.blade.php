@@ -1,6 +1,5 @@
 <x-layout>
-
-    <body class="bg-dark">
+    <body id="bg-search">
         <div class="container mt-5 pb-3">
             <div class="row">
                 <div class="col-md-8 offset-md-2">
@@ -16,25 +15,34 @@
                             <h3>Search Results for "{{ $query }}"</h3>
                             <div class="row">
                                 @foreach($moves as $move)
-                                    <div class="col-12 col-md-4 mb-4">
+                                    <div class="col-12 col-md-4 mb-4 d-flex flex-column justify-content-center align-items-center">
                                         <div class="card move-card position-relative">
-                                            <img src="https://picsum.photos/200" class="card-img-top rounded-top"
-                                                alt="...">
+                                            <div class="image-card position-relative">
+                                                <p class="move-category position-absolute start-50 bottom-0 translate-middle-x bg-warning text-white">
+                                                    {{ $move->category->name }}
+                                                </p>
+                                                <a href="">
+                                                    <img src="https://picsum.photos/200" class="card-img-top rounded-top" alt="...">
+                                                </a>
+                                            </div>
                                             <div
                                                 class="move-number position-absolute top-0 start-0 bg-orange text-white">
                                                 {{ $move->id }}
                                             </div>
-                                            <div class="card-body bg-black">
+                                            <div class="card-body bg-black d-flex flex-column justify-content-center align-items-center">
                                                 <h5 class="card-title text-white">{{ $move->title }}</h5>
                                                 <p class="card-text text-white">
-                                                    @if(strlen($move->body) > 100)
-                                                        {{ Str::limit($move->body, 100) }}
+                                                    @if(strlen($move->body) > 40)
+                                                        {{ Str::limit($move->body, 40) }}
                                                     @else
                                                         {{ $move->body }}
                                                     @endif
                                                 </p>
-                                                <p class="card-text text-white"><small>Difficoltà:
-                                                        {{ $move->difficulty }}</small></p>
+                                                <div class="move-difficulty position-absolute top-0 end-0 p-2">
+                                                    <span class="info-icon" data-bs-toggle="tooltip" data-bs-placement="top" title="Difficoltà: {{ $move->difficulty }}">
+                                                        <i class="bi bi-info-circle-fill text-orange"></i>
+                                                    </span>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
