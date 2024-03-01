@@ -18,12 +18,15 @@ use App\Http\Controllers\FrontController;
 
 Route::get('/', [FrontController::class, 'welcome'])->name('welcome');
 
-
+// Moves
+    // Category
 Route::get('/categories/{category}', [FrontController::class, 'showCategory'])->name('category.show');
-
+    // Create
 Route::get('/new/movement', [MoveController::class, 'createMovement'])->middleware('auth')
     ->name('movements.create');
-
+    // Index
+Route::get('/movements/index/{title}', [MoveController::class, 'movementIndex'])->name('movements.index');
+    
 // User
 Route::get('/profile', [Controller::class, 'profile'])->middleware('auth')
     ->name('profile');

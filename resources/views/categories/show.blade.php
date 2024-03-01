@@ -18,7 +18,7 @@
                                                         class="move-category position-absolute start-50 bottom-0 translate-middle-x bg-warning text-white">
                                                         {{ $move->category->name }}
                                                     </p>
-                                                    <a href="">
+                                                    <a href="{{route('movements.index', ['title' => $move->title] )}}">
                                                         <img src="https://picsum.photos/200"
                                                             class="card-img-top rounded-top" alt="...">
                                                     </a>

@@ -23,7 +23,7 @@ class FrontController extends Controller
         $categories = $categories->take(3);
 
         $moves = Move::latest()->take(6)->get();
-        // Passa le categorie e le mosse alla vista 'welcome'
+
         return view('welcome', compact('moves', 'categories'));
     }
 

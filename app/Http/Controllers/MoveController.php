@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Move;
 use Illuminate\Http\Request;
 
 class MoveController extends Controller
@@ -12,4 +13,10 @@ class MoveController extends Controller
         return view('movements.create');
     }
 
+    public function movementIndex($title)
+    {
+        $move = Move::where('title', $title)->first();
+        return view('moves.index', compact('move'));
+    }
+    
 }
