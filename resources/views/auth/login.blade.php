@@ -40,7 +40,7 @@
                                     </div>
 
                                     <div class="mb-3">
-                                        <button type="submit" class="welcome-btn btn-l text-white">Login</button>
+                                        <button type="submit" class="welcome-btn btn btn-outline-primary btn-l">Login</button>
                                     </div>
                                 </form>
 

@@ -17,12 +17,13 @@ class FrontController extends Controller
 
         // Assegna dinamicamente il percorso del logo in base all'ID della categoria
         foreach ($categories as $category) {
-            $category->logoPath = 'img/logo' . $category->id . '.jpg';
+            $category->logoPath = asset('img/logo' . $category->id . '.jpg');
+            $category->imgPath = asset('img/category' . $category->id . '.jpg');
         }
 
         $categories = $categories->take(3);
 
-        $moves = Move::latest()->take(6)->get();
+        $moves = Move::where('is_accepted', true)->latest()->take(6)->get();
 
         return view('welcome', compact('moves', 'categories'));
     }

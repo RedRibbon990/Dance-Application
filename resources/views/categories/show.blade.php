@@ -18,16 +18,12 @@
                                                         class="move-category position-absolute start-50 bottom-0 translate-middle-x bg-warning text-white">
                                                         {{ $move->category->name }}
                                                     </p>
-                                                    <a href="{{route('movements.index', ['title' => $move->title] )}}">
-                                                        <img src="https://picsum.photos/200"
-                                                            class="card-img-top rounded-top" alt="...">
+                                                    <a href="{{route('movements.detail', ['title' => $move->title] )}}">
+                                                        <img src="{{ asset('img/moves/rumbaMove.jpg') }}"
+                                                        class="card-img-top rounded-top" alt="...">
                                                     </a>
                                                 </div>
 
-                                                <div
-                                                    class="move-number position-absolute top-0 start-0 bg-orange text-white">
-                                                    {{ str_pad($move->id, 3, '0', STR_PAD_LEFT) }}
-                                                </div>
                                                 <div
                                                     class="card-body bg-black d-flex flex-column justify-content-center align-items-center">
                                                     <h5 class="card-title text-white">{{ $move->title }}</h5>

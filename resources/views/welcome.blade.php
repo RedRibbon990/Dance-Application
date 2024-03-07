@@ -65,9 +65,11 @@
                     @foreach($categories as $category)
                         <div class="col-md-6 col-lg-4 mb-4">
                             <div class="card h-100 border-0 shadow">
-                                <a class="category-card-link" href="{{ route('category.show', ['category' => $category->id]) }}">
-                                    <img src="https://picsum.photos/1200/500?random=4" class="card-img-top" alt="Salsa">
-                                </a>
+                                <div class="category-card-container">
+                                    <a class="category-card-link" href="{{ route('category.show', ['category' => $category->id]) }}">
+                                        <img src="{{ $category->imgPath }}" class="category-img img-fluid" alt="{{ $category->name }} Logo">
+                                    </a>
+                                </div>
                                 <div class="card-body d-flex flex-column align-items-center">
                                     <div class="logo-container">
                                         <img src="{{ asset($category->logoPath) }}"
@@ -130,41 +132,47 @@
             </div>
         </section>
 
-        <section id="features" class="features bg-white text-black py-3">
-            <a href="#download" class="btn btn-primary">Scarica Ora</a>
+        <!-- Resume Section -->
+        <section id="features" class="features bg-white text-black py-5">
             <div class="container">
-                <h2 class="section-title">Caratteristiche Principali</h2>
-                <div class="feature">
-                    <img src="feature1.jpg" alt="Feature 1" class="feature-img">
-                    <h3 class="feature-title">Lezioni Guidate</h3>
-                    <p class="feature-description">Scopri le nostre lezioni passo dopo passo, adatte a tutti i livelli
-                        di esperienza.</p>
-                </div>
-                <div class="feature">
-                    <img src="feature2.jpg" alt="Feature 2" class="feature-img">
-                    <h3 class="feature-title">Musica Personalizzata</h3>
-                    <p class="feature-description">Crea le tue playlist personalizzate per allenarti con la musica che
-                        ami.</p>
-                </div>
-                <div class="feature">
-                    <img src="feature3.jpg" alt="Feature 3" class="feature-img">
-                    <h3 class="feature-title">Calendario Eventi</h3>
-                    <p class="feature-description">Resta aggiornato su tutti gli eventi e le serate di ballo nella tua
-                        zona.</p>
+                <h2 class="section-title text-center mb-5">Caratteristiche Principali</h2>
+                <div class="row">
+                    <div class="col-md-4 mb-4">
+                        <div class="feature text-center">
+                            <img src="feature1.jpg" alt="Feature 1" class="feature-img">
+                            <h3 class="feature-title mt-3">Lezioni Guidate</h3>
+                            <p class="feature-description">Scopri le nostre lezioni passo dopo passo, adatte a tutti i livelli di esperienza.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="feature text-center">
+                            <img src="feature2.jpg" alt="Feature 2" class="feature-img">
+                            <h3 class="feature-title mt-3">Musica Personalizzata</h3>
+                            <p class="feature-description">Crea le tue playlist personalizzate per allenarti con la musica che ami.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="feature text-center">
+                            <img src="feature3.jpg" alt="Feature 3" class="feature-img">
+                            <h3 class="feature-title mt-3">Calendario Eventi</h3>
+                            <p class="feature-description">Resta aggiornato su tutti gli eventi e le serate di ballo nella tua zona.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
-
-            <section id="download" class="download">
+        
+            <section id="download" class="download py-5">
                 <div class="container">
-                    <h2 class="section-title">Scarica BallApp Ora</h2>
-                    <p class="section-description">Inizia a ballare come hai sempre sognato!</p>
-                    <div class="download-buttons">
-                        <a href="#" class="btn btn-primary">App Store</a>
-                        <a href="#" class="btn btn-secondary">Google Play</a>
+                    <h2 class="section-title text-center mb-4">Scarica BallApp Ora</h2>
+                    <p class="section-description text-center mb-5">Inizia a ballare come hai sempre sognato!</p>
+                    <div class="text-center">
+                        <a href="#" class="btn btn-primary mx-2">App Store</a>
+                        <a href="#" class="btn btn-secondary mx-2">Google Play</a>
                     </div>
                 </div>
             </section>
-
+        </section>
+        
             <footer id="contact" class="footer">
                 <div class="container">
                     <p class="footer-text">Contattaci per ulteriori informazioni</p>

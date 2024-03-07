@@ -13,10 +13,21 @@ class MoveController extends Controller
         return view('movements.create');
     }
 
-    public function movementIndex($title)
+    public function detail($title)
     {
         $move = Move::where('title', $title)->first();
-        return view('moves.index', compact('move'));
+        return view('moves.detail', compact('move'));
+    }
+
+    public function indexMove()
+    {
+        $moves = Move::where('is_accepted', true)->paginate(2);
+        return view('moves.index', compact('moves'));
     }
     
+    public function showAllMoves()
+    {
+        $moves = Move::paginate(10);
+        return view('movements.show', compact('moves'));
+    }
 }
